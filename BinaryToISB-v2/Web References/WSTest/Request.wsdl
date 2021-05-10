@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Request" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IRequest_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://isbcweb.infosearchsite.com/WSTest/ISBService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://isbcweb.infosearchsite.com/WSTest/ISBService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRequest_StartOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartOrder" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_StartOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_ProductDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductDetails" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_ProductDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_ProductDetails_MID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductDetails_MID" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_ProductDetails_MID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductDetails_MIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_UploadBinaryFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBinaryFile" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_UploadBinaryFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadBinaryFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_CheckOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOrder" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_CheckOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_CheckOrder_XML_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOrder_XML" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_CheckOrder_XML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckOrder_XMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_ValidateGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateGUID" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_ValidateGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_TokenAuthentication_InputMessage">
+    <wsdl:part name="parameters" element="tns:TokenAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="IRequest_TokenAuthentication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TokenAuthenticationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRequest">
+    <wsdl:operation name="StartOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/StartOrder" message="tns:IRequest_StartOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/StartOrderResponse" message="tns:IRequest_StartOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/ProductDetails" message="tns:IRequest_ProductDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/ProductDetailsResponse" message="tns:IRequest_ProductDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductDetails_MID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/ProductDetails_MID" message="tns:IRequest_ProductDetails_MID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/ProductDetails_MIDResponse" message="tns:IRequest_ProductDetails_MID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadBinaryFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/UploadBinaryFile" message="tns:IRequest_UploadBinaryFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/UploadBinaryFileResponse" message="tns:IRequest_UploadBinaryFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/CheckOrder" message="tns:IRequest_CheckOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/CheckOrderResponse" message="tns:IRequest_CheckOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckOrder_XML">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/CheckOrder_XML" message="tns:IRequest_CheckOrder_XML_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/CheckOrder_XMLResponse" message="tns:IRequest_CheckOrder_XML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/ValidateGUID" message="tns:IRequest_ValidateGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/ValidateGUIDResponse" message="tns:IRequest_ValidateGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TokenAuthentication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRequest/TokenAuthentication" message="tns:IRequest_TokenAuthentication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRequest/TokenAuthenticationResponse" message="tns:IRequest_TokenAuthentication_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRequest" type="tns:IRequest">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IRequest_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartOrder">
+      <soap:operation soapAction="http://tempuri.org/IRequest/StartOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductDetails">
+      <soap:operation soapAction="http://tempuri.org/IRequest/ProductDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductDetails_MID">
+      <soap:operation soapAction="http://tempuri.org/IRequest/ProductDetails_MID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadBinaryFile">
+      <soap:operation soapAction="http://tempuri.org/IRequest/UploadBinaryFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOrder">
+      <soap:operation soapAction="http://tempuri.org/IRequest/CheckOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckOrder_XML">
+      <soap:operation soapAction="http://tempuri.org/IRequest/CheckOrder_XML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateGUID">
+      <soap:operation soapAction="http://tempuri.org/IRequest/ValidateGUID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TokenAuthentication">
+      <soap:operation soapAction="http://tempuri.org/IRequest/TokenAuthentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Request">
+    <wsdl:port name="BasicHttpBinding_IRequest" binding="tns:BasicHttpBinding_IRequest">
+      <soap:address location="https://isbcweb.infosearchsite.com/WSTest/ISBService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
